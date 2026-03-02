@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       MIMS - Student Portal (student.html)
+       Accessible after logging in as a student.
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIMS - Student Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       PORTAL LAYOUT: Sidebar + Main Content
+       ============================================================ -->
+  <div class="portal">
+
+    <!-- ========================================================
+         LEFT SIDEBAR
+         Links: My Appointments, Request Appointment,
+                Announcements, Comment, Log Out
+         ======================================================== -->
+    <aside class="sidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar__header">
+        <div class="sidebar__title">MIMS</div>
+        <div class="sidebar__subtitle">Student Portal</div>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar__nav">
+        <a class="sidebar__link sidebar__link--active" data-section="my-appointments">
+          <span class="sidebar__icon">📅</span>
+          <span>My Appointments</span>
+        </a>
+        <a class="sidebar__link" data-section="request-appointment">
+          <span class="sidebar__icon">📝</span>
+          <span>Request Appointment</span>
+        </a>
+        <a class="sidebar__link" data-section="announcements">
+          <span class="sidebar__icon">📢</span>
+          <span>Announcements</span>
+        </a>
+        <a class="sidebar__link" data-section="comment">
+          <span class="sidebar__icon">💬</span>
+          <span>Comment</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer (Logout) -->
+      <div class="sidebar__footer">
+        <a class="sidebar__link" id="logoutBtn">
+          <span class="sidebar__icon">🚪</span>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </aside>
+
+
+    <!-- ========================================================
+         MAIN CONTENT AREA
+         Each section is toggled by sidebar links
+         ======================================================== -->
+    <main class="main-content">
+
+      <!-- ====================================================
+           SECTION 1: My Appointments
+           Shows appointment statuses in a table
+           ==================================================== -->
+      <div class="portal-section portal-section--active" id="section-my-appointments">
+        <div class="page-header">
+          <h1 class="page-header__title">My Appointments</h1>
+          <p class="page-header__desc">View the status of your appointment requests.</p>
+        </div>
+
+        <div class="panel">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Service</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Date Requested</th>
+                </tr>
+              </thead>
+              <tbody id="myAppointmentsTable">
+                <!-- Rows populated by JavaScript -->
+                <tr>
+                  <td colspan="5" class="text-center" style="padding: 2rem; color: #6C757D;">
+                    No appointments yet. Request one from the sidebar!
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 2: Request Appointment
+           Form to submit a new appointment request
+           ==================================================== -->
+      <div class="portal-section" id="section-request-appointment">
+        <div class="page-header">
+          <h1 class="page-header__title">Request Appointment</h1>
+          <p class="page-header__desc">Fill out the form below to request a clinic appointment.</p>
+        </div>
+
+        <div class="panel" style="max-width: 600px;">
+          <form id="appointmentForm">
+
+            <!-- Service Type Dropdown -->
+            <div class="form-group">
+              <label for="serviceType">Type of Clinic Service</label>
+              <select id="serviceType" class="form-input" required>
+                <option value="">-- Select a service --</option>
+                <option value="General Consultation">General Consultation</option>
+                <option value="First Aid Treatment">First Aid Treatment</option>
+                <option value="Health Assessment">Health Assessment</option>
+                <option value="Medicine Dispensing">Medicine Dispensing</option>
+                <option value="Medical Certificate">Medical Certificate</option>
+                <option value="Health Counseling">Health Counseling</option>
+              </select>
+            </div>
+
+            <!-- Student Name -->
+            <div class="form-group">
+              <label for="studentName">Full Name</label>
+              <input type="text" id="studentName" class="form-input" placeholder="e.g. Juan Dela Cruz" required />
+            </div>
+
+            <!-- Grade / Section -->
+            <div class="form-group">
+              <label for="studentGrade">Grade & Section</label>
+              <input type="text" id="studentGrade" class="form-input" placeholder="e.g. 12 ICT - THALES" required />
+            </div>
+
+            <!-- LRN -->
+            <div class="form-group">
+              <label for="studentLRN">LRN (Learner Reference Number)</label>
+              <input type="text" id="studentLRN" class="form-input" placeholder="e.g. 136888141225" required />
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+              <label for="appointmentDesc">Description of Appointment</label>
+              <textarea id="appointmentDesc" class="form-input" placeholder="Describe your reason for visiting the clinic..." required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn--primary btn--block">
+              Submit Appointment Request
+            </button>
+          </form>
+
+          <!-- Success message (hidden by default) -->
+          <div id="appointmentSuccess" class="hidden mt-2" style="background-color: #D1E7DD; color: #0F5132; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem;">
+            ✅ Appointment request submitted successfully! Check "My Appointments" for updates.
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 3: Announcements
+           Displays clinic announcements
+           ==================================================== -->
+      <div class="portal-section" id="section-announcements">
+        <div class="page-header">
+          <h1 class="page-header__title">Announcements</h1>
+          <p class="page-header__desc">Stay updated with the latest clinic announcements.</p>
+        </div>
+
+        <div class="announcement-list">
+          <div class="announcement-item">
+            <h3 class="announcement-item__title">📢 Annual Physical Exam Schedule</h3>
+            <p class="announcement-item__text">All Grade 12 students are required to undergo their annual physical examination. Please visit the clinic to schedule your appointment.</p>
+          </div>
+          <div class="announcement-item">
+            <h3 class="announcement-item__title">📢 Clinic Hours Reminder</h3>
+            <p class="announcement-item__text">The school clinic is open Monday to Friday, 7:00 AM to 5:00 PM. For emergencies outside these hours, please contact the school administration.</p>
+          </div>
+          <div class="announcement-item">
+            <h3 class="announcement-item__title">📢 Health & Wellness Week</h3>
+            <p class="announcement-item__text">Join us for Health & Wellness Week! Free BMI screening, blood pressure checks, and health talks for all students.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 4: Comment / Feedback
+           Simple form to submit feedback
+           ==================================================== -->
+      <div class="portal-section" id="section-comment">
+        <div class="page-header">
+          <h1 class="page-header__title">Submit Feedback</h1>
+          <p class="page-header__desc">Share your thoughts, suggestions, or concerns about the clinic.</p>
+        </div>
+
+        <div class="panel" style="max-width: 600px;">
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label for="feedbackMessage">Your Feedback</label>
+              <textarea id="feedbackMessage" class="form-input" placeholder="Write your feedback here..." required style="min-height: 150px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block">
+              Submit Feedback
+            </button>
+          </form>
+
+          <!-- Success message -->
+          <div id="feedbackSuccess" class="hidden mt-2" style="background-color: #D1E7DD; color: #0F5132; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem;">
+            ✅ Thank you! Your feedback has been submitted.
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- JavaScript for Student Portal -->
+  <script src="/js/student.js"></script>
+
+</body>
+</html>

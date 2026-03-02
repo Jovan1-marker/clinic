@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       MIMS - Admin Portal (admin.html)
+       Accessible after logging in as an admin.
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIMS - Admin Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       PORTAL LAYOUT: Sidebar + Main Content
+       ============================================================ -->
+  <div class="portal">
+
+    <!-- ========================================================
+         LEFT SIDEBAR
+         Links: Patient, Appointment, Record, Waitlist,
+                Feedback form, Log Out
+         ======================================================== -->
+    <aside class="sidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar__header">
+        <div class="sidebar__title">MIMS</div>
+        <div class="sidebar__subtitle">Admin Portal</div>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar__nav">
+        <a class="sidebar__link sidebar__link--active" data-section="patients">
+          <span class="sidebar__icon">👤</span>
+          <span>Patient</span>
+        </a>
+        <a class="sidebar__link" data-section="appointments">
+          <span class="sidebar__icon">📅</span>
+          <span>Appointment</span>
+        </a>
+        <a class="sidebar__link" data-section="records">
+          <span class="sidebar__icon">📁</span>
+          <span>Record</span>
+        </a>
+        <a class="sidebar__link" data-section="waitlist">
+          <span class="sidebar__icon">⏳</span>
+          <span>Waitlist</span>
+        </a>
+        <a class="sidebar__link" data-section="feedback">
+          <span class="sidebar__icon">💬</span>
+          <span>Feedback Form</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer (Logout) -->
+      <div class="sidebar__footer">
+        <a class="sidebar__link" id="logoutBtn">
+          <span class="sidebar__icon">🚪</span>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </aside>
+
+
+    <!-- ========================================================
+         MAIN CONTENT AREA
+         ======================================================== -->
+    <main class="main-content">
+
+      <!-- ====================================================
+           SECTION 1: Patients
+           Grid of patient cards with medical info
+           ==================================================== -->
+      <div class="portal-section portal-section--active" id="section-patients">
+        <div class="page-header">
+          <h1 class="page-header__title">Patient Records</h1>
+          <p class="page-header__desc">View and manage patient information. Click "Save" to update sensitive fields.</p>
+        </div>
+
+        <!-- Patient cards are rendered here by JavaScript -->
+        <div class="patient-grid" id="patientGrid">
+          <p style="color: #6C757D; padding: 2rem;">Loading patients...</p>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 2: Appointments
+           Inbox-style table of appointment requests
+           ==================================================== -->
+      <div class="portal-section" id="section-appointments">
+        <div class="page-header">
+          <h1 class="page-header__title">Appointment Requests</h1>
+          <p class="page-header__desc">Review and manage incoming appointment requests from students.</p>
+        </div>
+
+        <div class="panel">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Student Name</th>
+                  <th>Grade</th>
+                  <th>LRN</th>
+                  <th>Service</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTable">
+                <tr>
+                  <td colspan="8" class="text-center" style="padding: 2rem; color: #6C757D;">
+                    No appointment requests yet.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 3: Records
+           Google Drive-style file manager
+           ==================================================== -->
+      <div class="portal-section" id="section-records">
+        <div class="page-header">
+          <h1 class="page-header__title">Medical Records</h1>
+          <p class="page-header__desc">Create and manage medical notes and documents.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">My Documents</span>
+            <button class="btn btn--primary btn--sm" id="createRecordBtn">
+              + Create New Record
+            </button>
+          </div>
+
+          <!-- Records grid (document icons) -->
+          <div class="records-grid" id="recordsGrid">
+            <p style="color: #6C757D;">No records yet. Create one above!</p>
+          </div>
+
+          <!-- Record Editor (hidden until a record is clicked) -->
+          <div class="record-editor" id="recordEditor">
+            <input
+              type="text"
+              class="record-editor__title-input"
+              id="recordTitle"
+              placeholder="Document Title..."
+            />
+            <textarea
+              class="record-editor__textarea"
+              id="recordContent"
+              placeholder="Start typing your medical notes here..."
+            ></textarea>
+            <div class="record-editor__actions">
+              <button class="btn btn--success btn--sm" id="saveRecordBtn">💾 Save</button>
+              <button class="btn btn--danger btn--sm" id="deleteRecordBtn">🗑️ Delete</button>
+              <button class="btn btn--ghost btn--sm" id="closeEditorBtn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 4: Waitlist
+           Shows approved appointments
+           ==================================================== -->
+      <div class="portal-section" id="section-waitlist">
+        <div class="page-header">
+          <h1 class="page-header__title">Waitlist</h1>
+          <p class="page-header__desc">Students whose appointments have been approved.</p>
+        </div>
+
+        <div class="panel">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Student Name</th>
+                  <th>Service</th>
+                  <th>Description</th>
+                  <th>Approved Date</th>
+                </tr>
+              </thead>
+              <tbody id="waitlistTable">
+                <tr>
+                  <td colspan="5" class="text-center" style="padding: 2rem; color: #6C757D;">
+                    No approved appointments in the waitlist.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ====================================================
+           SECTION 5: Feedback Form
+           Displays feedback messages from students
+           ==================================================== -->
+      <div class="portal-section" id="section-feedback">
+        <div class="page-header">
+          <h1 class="page-header__title">Student Feedback</h1>
+          <p class="page-header__desc">Messages and suggestions submitted by students.</p>
+        </div>
+
+        <div class="panel">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Message</th>
+                  <th>Submitted By</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="feedbackTable">
+                <tr>
+                  <td colspan="4" class="text-center" style="padding: 2rem; color: #6C757D;">
+                    No feedback received yet.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- JavaScript for Admin Portal -->
+  <script src="/js/admin.js"></script>
+
+</body>
+</html>

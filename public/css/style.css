@@ -1,0 +1,1054 @@
+/*
+ * ============================================================
+ *  MIMS - Design System (style.css)
+ * ============================================================
+ *
+ *  COLOR PALETTE:
+ *    Primary:   Dark Forest Green  (#1B4332)
+ *    Secondary: Light Mint Green   (#D8F3DC)
+ *    Accent:    Gold / Yellow      (#FFD60A)
+ *    Text:      Dark charcoal      (#212529)
+ *    White:     #FFFFFF
+ *    Muted:     #6C757D
+ *    Border:    #DEE2E6
+ *    Danger:    #DC3545
+ *    Success:   #2D6A4F
+ *
+ *  FONT: 'Poppins' from Google Fonts
+ *
+ * ============================================================
+ */
+
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+ *  CSS RESET & BASE STYLES
+ * ============================================================ */
+
+/* Reset margins, paddings, and box-sizing for all elements */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #212529;
+  background-color: #D8F3DC; /* Light mint green background */
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Links: remove underline by default */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+ *  HEADER / NAVIGATION BAR
+ * ============================================================ */
+
+/* The top navigation bar — dark forest green */
+.navbar {
+  background-color: #1B4332;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo / Brand name in the header */
+.navbar__brand {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar__brand span {
+  color: #FFD60A; /* Gold accent for "MIMS" */
+}
+
+/* Navigation links container — aligned to the right */
+.navbar__links {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+/* Individual nav link */
+.navbar__link {
+  color: #FFFFFF;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Nav link hover effect */
+.navbar__link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active nav link — gold highlight */
+.navbar__link--active {
+  background-color: #FFD60A;
+  color: #1B4332;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+ *  HERO SECTION / SLIDESHOW
+ * ============================================================ */
+
+/* Slideshow container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background-color: #1B4332;
+}
+
+/* Individual slide */
+.slideshow__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 2rem;
+}
+
+/* Active slide — visible */
+.slideshow__slide--active {
+  opacity: 1;
+}
+
+/* Slide background overlay (for text readability) */
+.slideshow__slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(27, 67, 50, 0.9), rgba(45, 106, 79, 0.7));
+  z-index: 1;
+}
+
+/* Slide content sits above the overlay */
+.slideshow__content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.slideshow__content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.slideshow__content p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Slideshow dots indicator */
+.slideshow__dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.slideshow__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.slideshow__dot--active {
+  background-color: #FFD60A;
+}
+
+
+/* ============================================================
+ *  LANDING PAGE BODY SECTIONS
+ * ============================================================ */
+
+/* Section container */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+/* Gold underline accent on section titles */
+.section__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: #FFD60A;
+  border-radius: 2px;
+}
+
+.section__text {
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.8;
+  max-width: 800px;
+}
+
+/* Services grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Service card */
+.service-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #2D6A4F;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card__icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1B4332;
+  margin-bottom: 0.5rem;
+}
+
+.service-card__desc {
+  font-size: 0.9rem;
+  color: #6C757D;
+}
+
+
+/* ============================================================
+ *  LOGIN MODAL
+ * ============================================================ */
+
+/* Full-screen overlay */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Show the modal */
+.modal-overlay--visible {
+  display: flex;
+}
+
+/* Modal card */
+.modal {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.modal__subtitle {
+  font-size: 0.875rem;
+  color: #6C757D;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Close button (X) */
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6C757D;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.modal__close:hover {
+  color: #212529;
+}
+
+/* Error message inside modal */
+.modal__error {
+  background-color: #f8d7da;
+  color: #842029;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.modal__error--visible {
+  display: block;
+}
+
+
+/* ============================================================
+ *  FORM ELEMENTS
+ * ============================================================ */
+
+/* Form group: label + input wrapper */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1B4332;
+  margin-bottom: 0.4rem;
+}
+
+/* Text inputs, selects, textareas */
+.form-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 2px solid #DEE2E6;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #212529;
+  background-color: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2D6A4F;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+
+/* Textarea specific */
+textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Select dropdown */
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236C757D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+
+/* ============================================================
+ *  BUTTONS
+ * ============================================================ */
+
+/* Primary button — dark forest green */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn--primary {
+  background-color: #1B4332;
+  color: #FFFFFF;
+}
+
+.btn--primary:hover {
+  background-color: #2D6A4F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.3);
+}
+
+/* Full-width button */
+.btn--block {
+  width: 100%;
+}
+
+/* Accent / Gold button */
+.btn--accent {
+  background-color: #FFD60A;
+  color: #1B4332;
+}
+
+.btn--accent:hover {
+  background-color: #FFC300;
+}
+
+/* Danger button */
+.btn--danger {
+  background-color: #DC3545;
+  color: #FFFFFF;
+}
+
+.btn--danger:hover {
+  background-color: #BB2D3B;
+}
+
+/* Success / Approve button */
+.btn--success {
+  background-color: #2D6A4F;
+  color: #FFFFFF;
+}
+
+.btn--success:hover {
+  background-color: #1B4332;
+}
+
+/* Small button */
+.btn--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+}
+
+/* Ghost / outline button */
+.btn--ghost {
+  background-color: transparent;
+  color: #1B4332;
+  border: 2px solid #1B4332;
+}
+
+.btn--ghost:hover {
+  background-color: #1B4332;
+  color: #FFFFFF;
+}
+
+
+/* ============================================================
+ *  PORTAL LAYOUT (Student & Admin)
+ * ============================================================ */
+
+/* Main portal wrapper — sidebar + content */
+.portal {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #1B4332;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar header / brand */
+.sidebar__header {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFD60A;
+}
+
+.sidebar__subtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+/* Sidebar navigation links */
+.sidebar__nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar__link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+/* Active sidebar link — gold left border */
+.sidebar__link--active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFD60A;
+  border-left-color: #FFD60A;
+  font-weight: 600;
+}
+
+/* Sidebar link icon */
+.sidebar__icon {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+/* Sidebar footer (Logout) */
+.sidebar__footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Main content area — offset by sidebar width */
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 2rem;
+  background-color: #D8F3DC;
+  min-height: 100vh;
+}
+
+/* Page header inside main content */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1B4332;
+}
+
+.page-header__desc {
+  font-size: 0.9rem;
+  color: #6C757D;
+  margin-top: 0.25rem;
+}
+
+
+/* ============================================================
+ *  CONTENT SECTIONS (panels / cards)
+ * ============================================================ */
+
+/* Content panel — white card */
+.panel {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.panel__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1B4332;
+}
+
+
+/* ============================================================
+ *  TABLES
+ * ============================================================ */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  background-color: #1B4332;
+  color: #FFFFFF;
+}
+
+table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #DEE2E6;
+  color: #495057;
+}
+
+/* Alternate row striping */
+table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+table tbody tr:hover {
+  background-color: #D8F3DC;
+}
+
+
+/* ============================================================
+ *  STATUS BADGES
+ * ============================================================ */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge--pending {
+  background-color: #FFF3CD;
+  color: #856404;
+}
+
+.badge--approved {
+  background-color: #D1E7DD;
+  color: #0F5132;
+}
+
+.badge--denied {
+  background-color: #F8D7DA;
+  color: #842029;
+}
+
+
+/* ============================================================
+ *  PATIENT CARDS GRID (Admin → Patient section)
+ * ============================================================ */
+
+.patient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.patient-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border-top: 3px solid #2D6A4F;
+  transition: transform 0.2s ease;
+}
+
+.patient-card:hover {
+  transform: translateY(-2px);
+}
+
+.patient-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 0.5rem;
+}
+
+.patient-card__info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-size: 0.8rem;
+  color: #6C757D;
+  margin-bottom: 0.75rem;
+}
+
+.patient-card__label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.patient-card__sensitive {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #DEE2E6;
+}
+
+.patient-card__sensitive .form-group {
+  margin-bottom: 0.5rem;
+}
+
+.patient-card__sensitive label {
+  font-size: 0.75rem;
+}
+
+.patient-card__sensitive .form-input {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+
+/* ============================================================
+ *  RECORDS (Google Drive-style file manager)
+ * ============================================================ */
+
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.record-card {
+  background-color: #FFFFFF;
+  border: 2px solid #DEE2E6;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.record-card:hover {
+  border-color: #2D6A4F;
+  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.15);
+  transform: translateY(-2px);
+}
+
+.record-card--active {
+  border-color: #FFD60A;
+  box-shadow: 0 4px 16px rgba(255, 214, 10, 0.2);
+}
+
+.record-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.record-card__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1B4332;
+  word-break: break-word;
+}
+
+.record-card__date {
+  font-size: 0.7rem;
+  color: #6C757D;
+  margin-top: 0.25rem;
+}
+
+/* Record editor */
+.record-editor {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.record-editor--visible {
+  display: block;
+}
+
+.record-editor__title-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 2px solid #DEE2E6;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1B4332;
+  margin-bottom: 0.75rem;
+}
+
+.record-editor__title-input:focus {
+  outline: none;
+  border-color: #2D6A4F;
+}
+
+.record-editor__textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  border: 2px solid #DEE2E6;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #212529;
+  resize: vertical;
+}
+
+.record-editor__textarea:focus {
+  outline: none;
+  border-color: #2D6A4F;
+}
+
+.record-editor__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+
+/* ============================================================
+ *  PORTAL SECTIONS (toggle visibility)
+ * ============================================================ */
+
+/* All portal sections are hidden by default */
+.portal-section {
+  display: none;
+}
+
+/* Only the active section is visible */
+.portal-section--active {
+  display: block;
+}
+
+
+/* ============================================================
+ *  ANNOUNCEMENTS SECTION
+ * ============================================================ */
+
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.announcement-item {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-left: 4px solid #FFD60A;
+}
+
+.announcement-item__title {
+  font-weight: 600;
+  color: #1B4332;
+  margin-bottom: 0.25rem;
+}
+
+.announcement-item__text {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+
+/* ============================================================
+ *  FOOTER
+ * ============================================================ */
+
+.footer {
+  background-color: #1B4332;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.85rem;
+}
+
+.footer strong {
+  color: #FFD60A;
+}
+
+
+/* ============================================================
+ *  UTILITY CLASSES
+ * ============================================================ */
+
+/* Text alignment */
+.text-center { text-align: center; }
+
+/* Margin utilities */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.gap-1 { gap: 0.5rem; }
+
+/* Hide element */
+.hidden { display: none !important; }
+
+
+/* ============================================================
+ *  RESPONSIVE DESIGN
+ * ============================================================ */
+
+@media (max-width: 768px) {
+  /* Sidebar collapses on mobile */
+  .sidebar {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+    padding: 1rem;
+  }
+
+  /* Slideshow shrinks */
+  .slideshow {
+    height: 320px;
+  }
+
+  .slideshow__content h2 {
+    font-size: 1.75rem;
+  }
+
+  /* Patient cards go single column */
+  .patient-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Records grid adjusts */
+  .records-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar__link span {
+    display: none;
+  }
+
+  .sidebar__header {
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  .sidebar__title {
+    font-size: 0.8rem;
+  }
+
+  .sidebar__subtitle {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .navbar {
+    padding: 0 1rem;
+  }
+}

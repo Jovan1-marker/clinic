@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       MIMS - Landing Page (index.html)
+       The public-facing page for the school clinic.
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIMS - Medical Information Management System</title>
+  <meta name="description" content="School Clinic Medical Information Management System - Managing student health records, appointments, and clinic services." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Links: Services, Announcements, Login (right-aligned)
+       ============================================================ -->
+  <nav class="navbar">
+    <!-- Brand / Logo -->
+    <div class="navbar__brand">
+      🏥 <span>MIMS</span> School Clinic
+    </div>
+
+    <!-- Navigation Links (Right Corner) -->
+    <div class="navbar__links">
+      <a href="#services" class="navbar__link">Services</a>
+      <a href="#announcements" class="navbar__link">Announcements</a>
+      <button class="navbar__link navbar__link--active" id="loginBtn">Login</button>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION — Image Slideshow
+       Auto-changes every 8 seconds
+       ============================================================ -->
+  <section class="slideshow" aria-label="Clinic slideshow">
+
+    <!-- Slide 1 -->
+    <div class="slideshow__slide slideshow__slide--active">
+      <div class="slideshow__content">
+        <h2>Welcome to the School Clinic</h2>
+        <p>Your health and well-being is our priority. We provide quality medical care for all students.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slideshow__slide">
+      <div class="slideshow__content">
+        <h2>Request Appointments Online</h2>
+        <p>Students can now request clinic appointments through the Student Portal — quick and easy.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slideshow__slide">
+      <div class="slideshow__content">
+        <h2>Health Records at Your Fingertips</h2>
+        <p>Our digital records system keeps all medical information organized, secure, and accessible.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slideshow__slide">
+      <div class="slideshow__content">
+        <h2>Your Feedback Matters</h2>
+        <p>Help us improve our services by sharing your thoughts and suggestions through the portal.</p>
+      </div>
+    </div>
+
+    <!-- Dot Indicators -->
+    <div class="slideshow__dots">
+      <button class="slideshow__dot slideshow__dot--active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="slideshow__dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="slideshow__dot" data-slide="2" aria-label="Slide 3"></button>
+      <button class="slideshow__dot" data-slide="3" aria-label="Slide 4"></button>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT CLINIC SECTION
+       ============================================================ -->
+  <section class="section" id="about">
+    <h2 class="section__title">About the Clinic</h2>
+    <p class="section__text">
+      The School Clinic is dedicated to providing comprehensive healthcare services to all students. 
+      Our team of trained medical professionals ensures that every student receives prompt and proper 
+      medical attention. From routine checkups to emergency first aid, we are here to support the 
+      health and wellness of our school community. The clinic operates during school hours and maintains 
+      detailed medical records for each student visit.
+    </p>
+  </section>
+
+
+  <!-- ============================================================
+       CLINIC SERVICES SECTION
+       ============================================================ -->
+  <section class="section" id="services">
+    <h2 class="section__title">Clinic Services</h2>
+    <div class="services-grid">
+
+      <!-- Service Card 1 -->
+      <div class="service-card">
+        <div class="service-card__icon">🩺</div>
+        <h3 class="service-card__title">General Consultation</h3>
+        <p class="service-card__desc">Walk-in consultations for common illnesses, headaches, stomach aches, and general health concerns.</p>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="service-card">
+        <div class="service-card__icon">🩹</div>
+        <h3 class="service-card__title">First Aid Treatment</h3>
+        <p class="service-card__desc">Immediate treatment for minor injuries, cuts, bruises, and sports-related incidents.</p>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="service-card">
+        <div class="service-card__icon">📋</div>
+        <h3 class="service-card__title">Health Assessment</h3>
+        <p class="service-card__desc">Periodic health screenings including height, weight, BMI, and vital signs monitoring.</p>
+      </div>
+
+      <!-- Service Card 4 -->
+      <div class="service-card">
+        <div class="service-card__icon">💊</div>
+        <h3 class="service-card__title">Medicine Dispensing</h3>
+        <p class="service-card__desc">Over-the-counter medications available for common ailments with proper documentation.</p>
+      </div>
+
+      <!-- Service Card 5 -->
+      <div class="service-card">
+        <div class="service-card__icon">📄</div>
+        <h3 class="service-card__title">Medical Certificates</h3>
+        <p class="service-card__desc">Issuance of medical certificates for excused absences and health clearances.</p>
+      </div>
+
+      <!-- Service Card 6 -->
+      <div class="service-card">
+        <div class="service-card__icon">🧠</div>
+        <h3 class="service-card__title">Health Counseling</h3>
+        <p class="service-card__desc">Guidance on nutrition, hygiene, mental health awareness, and healthy lifestyle habits.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ANNOUNCEMENTS SECTION
+       ============================================================ -->
+  <section class="section" id="announcements">
+    <h2 class="section__title">Announcements</h2>
+    <div class="announcement-list">
+
+      <div class="announcement-item">
+        <h3 class="announcement-item__title">📢 Annual Physical Exam Schedule</h3>
+        <p class="announcement-item__text">All Grade 12 students are required to undergo their annual physical examination. Please visit the clinic to schedule your appointment.</p>
+      </div>
+
+      <div class="announcement-item">
+        <h3 class="announcement-item__title">📢 Clinic Hours Reminder</h3>
+        <p class="announcement-item__text">The school clinic is open Monday to Friday, 7:00 AM to 5:00 PM. For emergencies outside these hours, please contact the school administration.</p>
+      </div>
+
+      <div class="announcement-item">
+        <h3 class="announcement-item__title">📢 Health & Wellness Week</h3>
+        <p class="announcement-item__text">Join us for Health & Wellness Week! Free BMI screening, blood pressure checks, and health talks for all students.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    &copy; 2024 <strong>MIMS</strong> — School Clinic Medical Information Management System. All rights reserved.
+  </footer>
+
+
+  <!-- ============================================================
+       LOGIN MODAL
+       Appears when "Login" button is clicked
+       ============================================================ -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <!-- Close Button -->
+      <button class="modal__close" id="closeModal">&times;</button>
+
+      <h2 class="modal__title">Welcome Back</h2>
+      <p class="modal__subtitle">Sign in to access your portal</p>
+
+      <!-- Error Message (hidden by default) -->
+      <div class="modal__error" id="loginError">
+        Invalid username or password. Please try again.
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-input"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Hint for demo purposes -->
+      <p class="mt-2 text-center" style="font-size: 0.75rem; color: #6C757D;">
+        Demo: admin/admin123 or student/student123
+      </p>
+    </div>
+  </div>
+
+
+  <!-- JavaScript for Landing Page -->
+  <script src="/js/main.js"></script>
+
+</body>
+</html>
